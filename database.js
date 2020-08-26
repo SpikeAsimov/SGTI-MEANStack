@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/SGTI-BD', { useNewUrlParser: true,
+mongoose.connect('mongodb+srv://Fer_2911:fdvega2911@cluster0.alcvb.mongodb.net/<dbname>?retryWrites=true&w=majority', { useNewUrlParser: true,
                                                         useUnifiedTopology: true,
                                                         useFindAndModify: false 
 } )
