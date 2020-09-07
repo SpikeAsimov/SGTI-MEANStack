@@ -12,7 +12,8 @@ app.set('port', process.env.PORT || 3000);
 //Middlewares
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:4200'})); //Trabajando con el server 4200
+//app.use(cors({origin: 'http://localhost:4200'})); //Trabajando con el server 4200
+app.use(cors({origin: 'https://total-tooling-272001.web.app'})); //Trabajando con el server 4200 
 
 //Routes
 app.use('/api', require('./routes/auth.route'));
@@ -25,6 +26,8 @@ app.use('/api/historialTramite',require('./routes/historialTramite.route'));
 app.use('/api/tipoTramites',require('./routes/tipoTramites.route'));
 app.use('/api/img', require('./routes/imagenes.route'));
 app.use('/api/upload', require('./routes/upload.route'));
+app.use('/api/mercadoPago', require('./routes/mercadoPago'));
+
 
 
 //Starting the server
