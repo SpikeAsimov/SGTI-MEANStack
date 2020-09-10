@@ -5,7 +5,8 @@ const comprobantePago = require('../models/comprobantePago');
 
 // Credenciales
 mercadopago.configure({
-    access_token: 'TEST-1433329887629306-090100-528a994a37cc4810be8fc2a1a88fdd95-290597670'
+    //access_token: 'TEST-1433329887629306-090100-528a994a37cc4810be8fc2a1a88fdd95-290597670'
+    access_token: 'APP_USR-1433329887629306-090100-fab47c14d6a19fd4aa9ab2a5ef0fec7d-290597670'
 });
 
 app.post('/checkout', async (req, res) =>{
