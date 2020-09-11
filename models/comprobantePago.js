@@ -7,6 +7,7 @@ const operacion = new Schema({
     tramite: {type: String},
     importe: {type: Number},
     idOperacion: {type: String},
+    idColeccion: {type: String},
     estado: {type: String}
 },
 {

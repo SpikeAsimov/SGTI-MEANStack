@@ -19,6 +19,7 @@ const data = new Schema({
     producto: { type: Schema.Types.ObjectId, ref: 'TipoTramite'},
     estadoTram: {type: String, default: 'Iniciado'},
     area: { type: Schema.Types.ObjectId, ref: 'Area'},
+    comprobantePago: { type: Schema.Types.ObjectId, ref: 'ComprobantePago'},
     usuario: { type: Schema.Types.ObjectId, ref: 'Users'}
 },
 {

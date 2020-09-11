@@ -50,6 +50,7 @@ dataCtrl.getAllDataById = async (req, res) => {
     .populate('usuario', 'apellido nombre telefono')
     .populate('area', 'nombre')
     .populate('producto', 'formulario descripcion')
+    .populate('comprobantePago')
     .sort({_id:-1});
     if (!dataAll) {
         return res.status(400).json({
@@ -93,6 +94,7 @@ dataCtrl.getData = async (req, res) => {
             .populate('usuario', 'apellido nombre telefono')
             .populate('area', 'nombre')
             .populate('producto', 'formulario descripcion')
+            .populate('comprobantePago')
     return res.status(200).json({
         ok: true,
         dataMinH: dataMinH
