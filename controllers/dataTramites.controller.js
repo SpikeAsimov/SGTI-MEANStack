@@ -10,6 +10,7 @@ dataCtrl.getAllData = async (req, res) => {
         .populate('usuario', 'apellido nombre telefono')
         .populate('area', 'nombre')
         .populate('producto', 'formulario descripcion')
+        .populate('comprobantePago')
         .sort({_id:-1});
         
 
