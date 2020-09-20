@@ -27,8 +27,7 @@ app.use('/api/tipoTramites',require('./routes/tipoTramites.route'));
 app.use('/api/img', require('./routes/imagenes.route'));
 app.use('/api/upload', require('./routes/upload.route'));
 app.use('/api/mercadoPago', require('./routes/mercadoPago'));
-
-
+app.use('/api/sincronizacionPago', require('./routes/sincronizacionPago.route'));
 
 //Starting the server
 app.listen(app.get('port'),() => {
