@@ -126,25 +126,27 @@ usersCtrl.loginUserGoogle = async (req, res) => {
 // LOGIN NORMAL
 //=================================================================
 usersCtrl.loginUser = async (req, res, next) => {
+    const password = req.body.password;
     const user = await User.findOne({ email: req.body.email })
     if (!user) {
         return res.status(409).send({ message: 'Email incorrecto' })
-    };
-    const validPassword = user.comparePassword(req.body.password, user.password)
-    if (validPassword) {
-        const expiresIn = 14400 /*Token expira en 4hs*/
-        const token = await jwt.sign({ id: user._id }, 'mySecretToken', {
-            expiresIn: expiresIn
-        });
-        const dataUser = {
-            token: token,
-            expiresIn: expiresIn,
-            usuario: user
-        }
-        res.status(200).json({ auth: true, dataUser, user });
     } else {
-        return res.status(401).send({ auth: false, token: null });
-    };
+        const validPassword = await user.matchPassword(password);
+        if (validPassword == true) {
+            const expiresIn = 14400 /*Token expira en 4hs*/
+            const token = await jwt.sign({ id: user._id }, 'mySecretToken', {
+                expiresIn: expiresIn
+            });
+            const dataUser = {
+                token: token,
+                expiresIn: expiresIn,
+                usuario: user
+            }
+            res.status(200).json({ auth: true, dataUser, user });
+        } else {
+            return res.status(401).send({ auth: false, token: null, message: 'Contraseña incorrecta'});
+        };
+    }
 }
 //Logout
 usersCtrl.logoutUser = (req, res) => {
